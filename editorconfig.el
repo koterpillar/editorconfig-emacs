@@ -284,6 +284,10 @@ yet.")
                ((equal end-of-line "lf") 'undecided-unix)
                ((equal end-of-line "cr") 'undecided-mac)
                ((equal end-of-line "crlf") 'undecided-dos)
+               ((equal end-of-line "native") (if (memq system-type
+                                                   '(windows-nt ms-dos))
+                                               'undecided-dos
+                                               'undecided-unix))
                (t 'undecided)))
          (cs (cond
                ((equal charset "latin1") 'iso-latin-1)
